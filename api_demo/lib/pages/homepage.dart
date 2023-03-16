@@ -41,14 +41,43 @@ class _HomePageState extends State<HomePage> {
                     backgroundImage: NetworkImage(snapshot.data![index].avatar),
                   ),
                   title: Text(snapshot.data![index].name),
-                  trailing: IconButton(
-                    onPressed: () {
-                      RemoteServices.deleteStudent(
-                          id: snapshot.data![index].id);
-                      setState(() {});
-                    },
-                    icon: const Icon(Icons.delete),
-                    color: Colors.red,
+                  // trailing: IconButton(
+                  //   onPressed: () {
+                  //     RemoteServices.deleteStudent(
+                  //         id: snapshot.data![index].id);
+                  //     setState(() {});
+                  //   },
+                  //   icon: const Icon(Icons.delete),
+                  //   color: Colors.red,
+                  // ),
+                  trailing: Column(
+                    children: [
+                      // InkWell(
+                      //   child: Icon(
+                      //       (!getBoolFromDynamic(snapshot.data!, index))
+                      //           ? Icons.favorite_border
+                      //           : Icons.favorite,
+                      //       color: Colors.amber),
+                      //   onTap: () async {
+                      //     http.Response res = await updateFavorite(
+                      //         (jsonDecode(snapshot.data!.body.toString())[index]
+                      //             ['id']),
+                      //         !getBoolFromDynamic(snapshot.data!, index));
+                      //     if (res.statusCode == 200) {
+                      //       setState(() {});
+                      //     }
+                      //   },
+                      // ),,
+                      IconButton(
+                        onPressed: () {
+                          RemoteServices.deleteStudent(
+                              id: snapshot.data![index].id);
+                          setState(() {});
+                        },
+                        icon: const Icon(Icons.delete),
+                        color: Colors.red,
+                      )
+                    ],
                   ),
                   subtitle: Text("Email : ${snapshot.data![index].email}"),
                   onTap: () => Navigator.push(
@@ -84,19 +113,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-// InkWell(
-//  child: Icon(
-//    (!getBoolFromDynamic(snapshot.data!, index))
-//        ? Icons.favorite_border
-//        : Icons.favorite,
-//    color: Colors.amber),
-//  onTap: () async {
-//    http.Response res = await updateFavorite(
-//        (jsonDecode(snapshot.data!.body.toString())[
-//         index]['id']),
-//         !getBoolFromDynamic(snapshot.data!, index));
-//     if (res.statusCode == 200) {
-//        setState(() {});
-//      }
-//    },
-// ),
